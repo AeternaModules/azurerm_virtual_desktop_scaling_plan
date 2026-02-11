@@ -44,7 +44,7 @@ EOT
     exclusion_tag       = optional(string)
     friendly_name       = optional(string)
     tags                = optional(map(string))
-    schedule = object({
+    schedule = list(object({
       days_of_week                         = set(string)
       name                                 = string
       off_peak_load_balancing_algorithm    = string
@@ -63,11 +63,19 @@ EOT
       ramp_up_load_balancing_algorithm     = string
       ramp_up_minimum_hosts_percent        = optional(number)
       ramp_up_start_time                   = string
-    })
+    }))
     host_pool = optional(object({
       hostpool_id          = string
       scaling_plan_enabled = bool
     }))
   }))
+  validation {
+    condition = alltrue([
+      for k, v in var.virtual_desktop_scaling_plans : (
+        length(v.schedule) >= 1
+      )
+    ])
+    error_message = "Each schedule list must contain at least 1 items"
+  }
 }
 
