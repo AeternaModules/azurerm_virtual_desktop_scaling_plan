@@ -35,7 +35,7 @@ resource "azurerm_virtual_desktop_scaling_plan" "virtual_desktop_scaling_plans" 
   }
 
   dynamic "host_pool" {
-    for_each = each.value.host_pool != null ? [each.value.host_pool] : []
+    for_each = each.value.host_pool != null ? each.value.host_pool : []
     content {
       hostpool_id          = host_pool.value.hostpool_id
       scaling_plan_enabled = host_pool.value.scaling_plan_enabled

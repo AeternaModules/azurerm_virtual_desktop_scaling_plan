@@ -64,10 +64,10 @@ EOT
       ramp_up_minimum_hosts_percent        = optional(number)
       ramp_up_start_time                   = string
     }))
-    host_pool = optional(object({
+    host_pool = optional(list(object({
       hostpool_id          = string
       scaling_plan_enabled = bool
-    }))
+    })))
   }))
   validation {
     condition = alltrue([
@@ -77,34 +77,13 @@ EOT
     ])
     error_message = "Each schedule list must contain at least 1 items"
   }
-  validation {
-    condition = alltrue([
-      for k, v in var.virtual_desktop_scaling_plans : (
-        length(v.name) > 0
-      )
-    ])
-    error_message = "must not be empty"
-  }
-  validation {
-    condition = alltrue([
-      for k, v in var.virtual_desktop_scaling_plans : (
-        v.friendly_name == null || (length(v.friendly_name) >= 1 && length(v.friendly_name) <= 64)
-      )
-    ])
-    error_message = "must be between 1 and 64 characters"
-  }
-  validation {
-    condition = alltrue([
-      for k, v in var.virtual_desktop_scaling_plans : (
-        v.description == null || (length(v.description) >= 1 && length(v.description) <= 512)
-      )
-    ])
-    error_message = "must be between 1 and 512 characters"
-  }
   # --- Unconfirmed validation candidates, derived from azurerm_virtual_desktop_scaling_plan's provider source ---
   # Not auto-enabled: either a bespoke provider validator we can't safely translate,
   # or a path that crosses a list-typed block (needs its own for_each wrapping).
   # Review, translate into a real validation{} block above, and delete once confirmed.
+  # path: name
+  #   condition: length(value) > 0
+  #   message:   must not be empty
   # path: location
   #   source:    location.EnhancedValidate: no recognizable `if ... { errors = append(...) }` pattern - read it by hand
   # path: resource_group_name
@@ -121,6 +100,12 @@ EOT
   #   source:    [from resourcegroups.ValidateName: invalid when len(value) == 0]
   # path: resource_group_name
   #   source:    [from resourcegroups.ValidateName] !matched
+  # path: friendly_name
+  #   condition: length(value) >= 1 && length(value) <= 64
+  #   message:   must be between 1 and 64 characters
+  # path: description
+  #   condition: length(value) >= 1 && length(value) <= 512
+  #   message:   must be between 1 and 512 characters
   # path: schedule.name
   #   condition: length(value) > 0
   #   message:   must not be empty
