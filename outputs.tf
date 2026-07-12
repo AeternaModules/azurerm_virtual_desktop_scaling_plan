@@ -1,3 +1,7 @@
+output "virtual_desktop_scaling_plans_id" {
+  description = "Map of id values across all virtual_desktop_scaling_plans, keyed the same as var.virtual_desktop_scaling_plans"
+  value       = { for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : k => v.id }
+}
 output "virtual_desktop_scaling_plans_description" {
   description = "Map of description values across all virtual_desktop_scaling_plans, keyed the same as var.virtual_desktop_scaling_plans"
   value       = { for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : k => v.description }
