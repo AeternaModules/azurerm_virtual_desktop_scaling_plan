@@ -1,45 +1,41 @@
-output "virtual_desktop_scaling_plans" {
-  description = "All virtual_desktop_scaling_plan resources"
-  value       = azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans
-}
 output "virtual_desktop_scaling_plans_description" {
-  description = "List of description values across all virtual_desktop_scaling_plans"
-  value       = [for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : v.description]
+  description = "Map of description values across all virtual_desktop_scaling_plans, keyed the same as var.virtual_desktop_scaling_plans"
+  value       = { for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : k => v.description }
 }
 output "virtual_desktop_scaling_plans_exclusion_tag" {
-  description = "List of exclusion_tag values across all virtual_desktop_scaling_plans"
-  value       = [for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : v.exclusion_tag]
+  description = "Map of exclusion_tag values across all virtual_desktop_scaling_plans, keyed the same as var.virtual_desktop_scaling_plans"
+  value       = { for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : k => v.exclusion_tag }
 }
 output "virtual_desktop_scaling_plans_friendly_name" {
-  description = "List of friendly_name values across all virtual_desktop_scaling_plans"
-  value       = [for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : v.friendly_name]
+  description = "Map of friendly_name values across all virtual_desktop_scaling_plans, keyed the same as var.virtual_desktop_scaling_plans"
+  value       = { for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : k => v.friendly_name }
 }
 output "virtual_desktop_scaling_plans_host_pool" {
-  description = "List of host_pool values across all virtual_desktop_scaling_plans"
-  value       = [for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : v.host_pool]
+  description = "Map of host_pool values across all virtual_desktop_scaling_plans, keyed the same as var.virtual_desktop_scaling_plans"
+  value       = { for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : k => v.host_pool }
 }
 output "virtual_desktop_scaling_plans_location" {
-  description = "List of location values across all virtual_desktop_scaling_plans"
-  value       = [for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : v.location]
+  description = "Map of location values across all virtual_desktop_scaling_plans, keyed the same as var.virtual_desktop_scaling_plans"
+  value       = { for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : k => v.location }
 }
 output "virtual_desktop_scaling_plans_name" {
-  description = "List of name values across all virtual_desktop_scaling_plans"
-  value       = [for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : v.name]
+  description = "Map of name values across all virtual_desktop_scaling_plans, keyed the same as var.virtual_desktop_scaling_plans"
+  value       = { for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : k => v.name }
 }
 output "virtual_desktop_scaling_plans_resource_group_name" {
-  description = "List of resource_group_name values across all virtual_desktop_scaling_plans"
-  value       = [for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : v.resource_group_name]
+  description = "Map of resource_group_name values across all virtual_desktop_scaling_plans, keyed the same as var.virtual_desktop_scaling_plans"
+  value       = { for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : k => v.resource_group_name }
 }
 output "virtual_desktop_scaling_plans_schedule" {
-  description = "List of schedule values across all virtual_desktop_scaling_plans"
-  value       = [for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : v.schedule]
+  description = "Map of schedule values across all virtual_desktop_scaling_plans, keyed the same as var.virtual_desktop_scaling_plans"
+  value       = { for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : k => v.schedule }
 }
 output "virtual_desktop_scaling_plans_tags" {
-  description = "List of tags values across all virtual_desktop_scaling_plans"
-  value       = [for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : v.tags]
+  description = "Map of tags values across all virtual_desktop_scaling_plans, keyed the same as var.virtual_desktop_scaling_plans"
+  value       = { for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : k => v.tags }
 }
 output "virtual_desktop_scaling_plans_time_zone" {
-  description = "List of time_zone values across all virtual_desktop_scaling_plans"
-  value       = [for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : v.time_zone]
+  description = "Map of time_zone values across all virtual_desktop_scaling_plans, keyed the same as var.virtual_desktop_scaling_plans"
+  value       = { for k, v in azurerm_virtual_desktop_scaling_plan.virtual_desktop_scaling_plans : k => v.time_zone }
 }
 
