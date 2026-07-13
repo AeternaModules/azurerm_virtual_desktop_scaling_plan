@@ -111,6 +111,8 @@ EOT
   #   message:   must not be empty
   # path: schedule.days_of_week[*]
   #   source:    validation.StringInSlice value list is not a literal []string - likely a generated PossibleValuesFor*() helper; resolve separately
+  # path: schedule.ramp_up_start_time
+  #   source:    validateTime: no recognizable `if ... { errors = append(...) }` pattern - read it by hand
   # path: schedule.ramp_up_load_balancing_algorithm
   #   source:    validation.StringInSlice value list is not a literal []string - likely a generated PossibleValuesFor*() helper; resolve separately
   # path: schedule.ramp_up_minimum_hosts_percent
@@ -119,8 +121,12 @@ EOT
   # path: schedule.ramp_up_capacity_threshold_percent
   #   condition: value >= 0 && value <= 100
   #   message:   must be between 0 and 100
+  # path: schedule.peak_start_time
+  #   source:    validateTime: no recognizable `if ... { errors = append(...) }` pattern - read it by hand
   # path: schedule.peak_load_balancing_algorithm
   #   source:    validation.StringInSlice value list is not a literal []string - likely a generated PossibleValuesFor*() helper; resolve separately
+  # path: schedule.ramp_down_start_time
+  #   source:    validateTime: no recognizable `if ... { errors = append(...) }` pattern - read it by hand
   # path: schedule.ramp_down_load_balancing_algorithm
   #   source:    validation.StringInSlice value list is not a literal []string - likely a generated PossibleValuesFor*() helper; resolve separately
   # path: schedule.ramp_down_minimum_hosts_percent
@@ -131,6 +137,8 @@ EOT
   #   message:   must be between 0 and 100
   # path: schedule.ramp_down_stop_hosts_when
   #   source:    validation.StringInSlice value list is not a literal []string - likely a generated PossibleValuesFor*() helper; resolve separately
+  # path: schedule.off_peak_start_time
+  #   source:    validateTime: no recognizable `if ... { errors = append(...) }` pattern - read it by hand
   # path: schedule.off_peak_load_balancing_algorithm
   #   source:    validation.StringInSlice value list is not a literal []string - likely a generated PossibleValuesFor*() helper; resolve separately
   # path: host_pool.hostpool_id
